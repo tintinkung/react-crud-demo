@@ -1,0 +1,27 @@
+.user-card td{
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.delete-button {
+    padding: 0.7rem 1.7rem 0.7rem 1.7rem;
+    margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+    background-color: #ea0505;
+    color: white;
+    text-decoration: aquamarine;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+    border-color: red;
+}
+
+.update-button {
+    padding: 0.7rem 1.7rem 0.7rem 1.7rem;
+    margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+    background-color: #f0ff1f;
+    color: rgb(9, 19, 29);
+    text-decoration: aquamarine;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+    border-color: rgb(206, 168, 0);
+}

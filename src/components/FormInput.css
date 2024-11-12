@@ -1,0 +1,44 @@
+.label-container {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.input-box {
+    color: white;
+    background: bottom;
+    color: white;
+    font-size: unset;
+    max-width: 7em;
+    text-align: center;
+    border-style: dashed;
+    border-radius: 0.25rem;
+    margin-left: 0.75rem;
+    min-width: 26rem;
+}
+
+.error-message {
+    background-color: rgba(117, 33, 26, 0.7);
+    border-radius: 0.5rem;
+    color: #ff8484;
+    border: #a30202;
+    border-style: solid;
+    font-family: monospace;
+    font-size: 1rem;
+    width: 100%;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none;
+}

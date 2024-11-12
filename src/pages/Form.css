@@ -1,0 +1,42 @@
+.form-content {
+    background-color: #323842;
+    border-color: #3a414c;
+    border-radius: .15rem;
+    border-style: solid;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+.confirm-button {
+    padding: 0.7rem 1.7rem 0.7rem 1.7rem;
+    margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+    background-color: #31ff1f;
+    color: rgb(0, 20, 4);
+    text-decoration: aquamarine;
+    font-size: large;
+    font-weight: bold;
+    border-radius: .25rem;
+    border-color: rgb(0, 206, 27);
+}
+
+.back-button {
+    padding: 0.7rem 1.7rem 0.7rem 1.7rem;
+    margin: 0.7rem 0.5rem 0.7rem 0.5rem;
+    background: bottom;
+    border-radius: .25rem;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.back-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.submit-button {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
