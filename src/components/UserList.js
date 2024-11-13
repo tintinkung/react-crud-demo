@@ -1,13 +1,13 @@
 import React from "react"
 import { useRecoilValue } from "recoil"
-import { fetchUsersSelector } from "../states/selectors"
+import { userListsAtom } from "../states"
 import AsyncWrapper from "./AsyncWrapper"
-import Card from "./Card"
 
+import Card from "./Card"
 import "./UserList.css"
 
 const UserList = () => {
-  const userList = useRecoilValue(fetchUsersSelector)
+  const userList = useRecoilValue(userListsAtom)
 
   return (
     <>

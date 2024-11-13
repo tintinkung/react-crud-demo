@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import FormInput from "../components/FormInput";
 import "./Form.css"
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { userListsAtom, usersListUrl } from "../states";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
@@ -13,21 +15,26 @@ const AddForm = () => {
   const navigate = useNavigate()
 
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const setUserLists = useSetRecoilState(userListsAtom)
+  const apiUrl = useRecoilValue(usersListUrl);
+
   const onSubmit = handleSubmit(async (data) => {
-    try {
+    try{
         console.log("pending submitting", data)
 
-        await axios.post("http://localhost:8800/users", {
-              id: null,
-              name: data.name,
-              email: data.email,
-              age: data.age,
-              phone: data.phone
-            })
-        navigate("/")
-        window.location.reload()
+        const update = {
+          id: null,
+          name: data.name,
+          email: data.email,
+          age: data.age,
+          phone: data.phone
+        }
 
-    } catch(err) {
+        await axios.post(apiUrl, update)
+        setUserLists((state) => [...state, update])
+
+        navigate("/")
+    } catch(err){
         console.log(err)
     }
 

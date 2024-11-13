@@ -1,7 +1,7 @@
-import { selector } from "recoil"
-import { usersListUrl } from "./atoms"
+import { atom, selector } from "recoil";
+
 /**
- * @typedef {Object} InputFormType 
+ * @typedef {Object} userDataType 
  * @property {String} id
  * @property {String} name
  * @property {String} email
@@ -9,7 +9,7 @@ import { usersListUrl } from "./atoms"
  * @property {Number} phone
  */
 
-/** @type {import("recoil").RecoilValueReadOnly<InputFormType[]>} */
+/** @type {import("recoil").RecoilValueReadOnly<userDataType[]>} */
 export const fetchUsersSelector = selector({
     key: "fetchUsersSelector",
     get: async ({ get }) => {
@@ -31,3 +31,25 @@ export const fetchUsersSelector = selector({
         }
     },
 })
+
+export const formInputAtom = atom({
+    key: "formInputAtom",
+    default: {
+        id: null,
+        name: "Unkown",
+        email: "Unkown",
+        age: -1,
+        phone: null,
+    }
+});
+
+export const userListsAtom = atom({
+    key: "userListsAtom",
+    default: fetchUsersSelector,
+  });
+  
+
+export const usersListUrl = atom({
+    key: "usersListUrl",
+    default: "https://tin-ideapad.taila98457.ts.net/backend/users/"
+});

@@ -1,8 +1,8 @@
 
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom"
-import { fetchUsersSelector } from "../states/selectors"
-import { useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
+import { userListsAtom, usersListUrl } from "../states"
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import FormInput from "../components/FormInput";
@@ -15,8 +15,11 @@ const UpdateForm = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const userId = location.pathname.split("/")[2]
-  const user = useRecoilValue(fetchUsersSelector).find(user => user.id == userId)
-  console.log("updaing id:", user.id)
+  const user = useRecoilValue(userListsAtom).find(user => user.id == Number(userId))
+  const [userLists, setUserLists] = useRecoilState(userListsAtom)
+  const apiUrl = useRecoilValue(usersListUrl);
+
+  console.log("updating id:", user.id)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -28,21 +31,33 @@ const UpdateForm = () => {
     }
   });
 
+  const replaceUser = (userList, id, data) => userList.map((item) => item.id === id? data : item);
+
   const onSubmit = handleSubmit(async (data) => {
+
     try {
       console.log("putting user:", user)
 
-      await axios.put("http://localhost:8800/users/" + userId, {
-        id: null,
+      const update = {
+        id: user,
         name: data.name,
         email: data.email,
         age: data.age,
         phone: data.phone
-      })
-      navigate("/")
-      window.location.reload()
+      }
 
-    } catch(err) {
+      const newList = replaceUser(userLists, user.id, {
+        ...user,
+        ...update,
+        id: user.id
+      });
+      console.log("new updated:", newList)
+
+      await axios.put(apiUrl + userId, update)
+      setUserLists(newList)
+      navigate("/")
+
+    }catch(err){
       console.log(err)
     }
   });

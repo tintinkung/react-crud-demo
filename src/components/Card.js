@@ -3,14 +3,19 @@ import { useNavigate } from "react-router-dom"
 
 import "./Card.css"
 import axios from "axios"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { userListsAtom, usersListUrl } from "../states"
 
-const Card = ({ pokemon: user }) => {
+const Card = ({ user }) => {
     const navigate = useNavigate();
+    const setUserList = useSetRecoilState(userListsAtom);
+    const apiUrl = useRecoilValue(usersListUrl);
 
     const handleDelete= async (id) => {
         try{
-            await axios.delete("http://localhost:8800/users/" + id);
-            window.location.reload()
+            await axios.delete(apiUrl + id);
+            setUserList((userList) => userList.filter(user => user.id != id));
+
         } catch(err) {
             console.log(err);
         }
