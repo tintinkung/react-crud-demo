@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import mariadb from 'mariadb'
 
+// express + mariadb api backend
+
 const app = express()
 
 const db = mariadb.createPool({

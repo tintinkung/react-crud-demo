@@ -29,8 +29,7 @@ const UpdateForm = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-
-    try{
+    try {
       console.log("putting user:", user)
 
       await axios.put("http://localhost:8800/users/" + userId, {
@@ -43,7 +42,7 @@ const UpdateForm = () => {
       navigate("/")
       window.location.reload()
 
-    }catch(err){
+    } catch(err) {
       console.log(err)
     }
   });

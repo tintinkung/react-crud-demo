@@ -14,7 +14,7 @@ const AddForm = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = handleSubmit(async (data) => {
-    try{
+    try {
         console.log("pending submitting", data)
 
         await axios.post("http://localhost:8800/users", {
@@ -27,7 +27,7 @@ const AddForm = () => {
         navigate("/")
         window.location.reload()
 
-    } catch(err){
+    } catch(err) {
         console.log(err)
     }
 

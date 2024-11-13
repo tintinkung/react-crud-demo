@@ -10,7 +10,7 @@ const Users = () => {
     <div className="app-content">
       <button className="add-button">
         <Link to="/add" >
-        Add new book
+        Add new user
         </Link>
       </button>
       <AsyncWrapper>
